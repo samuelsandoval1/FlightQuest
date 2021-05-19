@@ -83,6 +83,7 @@ class Cloud(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
 
+
 pygame.mixer.init()
 
 # initialize pygame
@@ -97,11 +98,11 @@ pygame.time.set_timer(ADDCLOUD, 1000)
 
 # Sound source: http://ccmixter.org/files/Apoxode/59262
 # License: https://creativecommons.org/licenses/by/3.0/
-pygame.mixer.music.load("Apoxode_-_-_-.mp3")
+pygame.mixer.music.load("media/Apoxode_-_-_-.mp3")
 pygame.mixer.music.play(loops=-1)
 # Sound source: http://freesound.org/people/jeckkech/sounds/391658/
 # License: https://creativecommons.org/publicdomain/zero/1.0/
-collision_sound = pygame.mixer.Sound("collision.wav")
+collision_sound = pygame.mixer.Sound("media/collision.wav")
 
 player = Player()
 background = pygame.Surface(screen.get_size())
@@ -117,7 +118,7 @@ running = True
 while running:
     for event in pygame.event.get():
         if event.type == KEYDOWN and event.key == K_ESCAPE:
-                running = False
+            running = False
 
         elif event.type == QUIT:
             running = False
@@ -132,7 +133,7 @@ while running:
             all_sprites.add(new_cloud)
             clouds.add(new_cloud)
 
-    screen.blit(background, (0,0))
+    screen.blit(background, (0, 0))
     pressed_keys = pygame.key.get_pressed()
     player.update(pressed_keys)
     enemies.update()
