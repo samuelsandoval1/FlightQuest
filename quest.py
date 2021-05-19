@@ -1,6 +1,5 @@
 import pygame
 import random
-
 # Import pygame.locals for easier access to key coordinates
 from pygame.locals import (
     RLEACCEL,
@@ -84,6 +83,7 @@ class Cloud(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
 
+pygame.mixer.init()
 
 # initialize pygame
 pygame.init()
@@ -94,6 +94,16 @@ ADDENEMY = pygame.USEREVENT + 1
 pygame.time.set_timer(ADDENEMY, 250)
 ADDCLOUD = pygame.USEREVENT + 2
 pygame.time.set_timer(ADDCLOUD, 1000)
+
+# Sound source: http://ccmixter.org/files/Apoxode/59262
+# License: https://creativecommons.org/licenses/by/3.0/
+
+pygame.mixer.music.load("Apoxode_-_-_-.mp3")
+pygame.mixer.music.play(loops=-1)
+
+# move_down_sound = pygame.mixer.Sound("Falling_putter.ogg")
+# collision_sound = pygame.mixer.Sound("Collision.ogg")
+
 
 player = Player()
 background = pygame.Surface(screen.get_size())
@@ -135,9 +145,12 @@ while running:
 
     if pygame.sprite.spritecollideany(player, enemies):
         player.kill()
+        #collision_sound.play()
         running = False
 
     pygame.display.flip()
     clock.tick(45)
 
+pygame.mixer.music.stop()
+pygame.mixer.quit()
 pygame.quit()
