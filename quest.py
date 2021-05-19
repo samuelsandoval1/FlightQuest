@@ -96,10 +96,14 @@ ADDCLOUD = pygame.USEREVENT + 2
 pygame.time.set_timer(ADDCLOUD, 1000)
 
 player = Player()
+background = pygame.Surface(screen.get_size())
+background.fill((135, 206, 250))
 
 enemies = pygame.sprite.Group()
+clouds = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
+clock = pygame.time.Clock()
 
 running = True
 while running:
@@ -115,13 +119,16 @@ while running:
             enemies.add(new_enemy)
             all_sprites.add(new_enemy)
 
+        elif event.type == ADDCLOUD:
+            new_cloud = Cloud()
+            all_sprites.add(new_cloud)
+            clouds.add(new_cloud)
+
+    screen.blit(background, (0,0))
     pressed_keys = pygame.key.get_pressed()
-
     player.update(pressed_keys)
-
     enemies.update()
-
-    screen.fill((0, 0, 0))
+    clouds.update()
 
     for entity in all_sprites:
         screen.blit(entity.surf, entity.rect)
@@ -131,5 +138,6 @@ while running:
         running = False
 
     pygame.display.flip()
+    clock.tick(45)
 
 pygame.quit()
