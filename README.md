@@ -6,4 +6,4 @@
 ## Game Walkthrough
 <img src="https://github.com/samuelsandoval1/FlightQuest/raw/main/media/demo.gif" width=500>
 
-Built by [samuelsandoval1](https://github.com/samuelsandoval1/)
+Developed by [samuelsandoval1👨🏻‍💻](https://github.com/samuelsandoval1/)
