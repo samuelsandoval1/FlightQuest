@@ -97,13 +97,11 @@ pygame.time.set_timer(ADDCLOUD, 1000)
 
 # Sound source: http://ccmixter.org/files/Apoxode/59262
 # License: https://creativecommons.org/licenses/by/3.0/
-
 pygame.mixer.music.load("Apoxode_-_-_-.mp3")
 pygame.mixer.music.play(loops=-1)
-
-# move_down_sound = pygame.mixer.Sound("Falling_putter.ogg")
-# collision_sound = pygame.mixer.Sound("Collision.ogg")
-
+# Sound source: http://freesound.org/people/jeckkech/sounds/391658/
+# License: https://creativecommons.org/publicdomain/zero/1.0/
+collision_sound = pygame.mixer.Sound("collision.wav")
 
 player = Player()
 background = pygame.Surface(screen.get_size())
@@ -145,7 +143,7 @@ while running:
 
     if pygame.sprite.spritecollideany(player, enemies):
         player.kill()
-        #collision_sound.play()
+        collision_sound.play()
         running = False
 
     pygame.display.flip()
